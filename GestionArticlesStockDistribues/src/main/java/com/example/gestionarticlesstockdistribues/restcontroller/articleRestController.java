@@ -1,6 +1,6 @@
 package com.example.gestionarticlesstockdistribues.restcontroller;
 
-import com.example.gestionarticlesstockdistribues.dto.recArticleDTO;
+import com.example.gestionarticlesstockdistribues.dto.RecArticleDTO;
 import com.example.gestionarticlesstockdistribues.services.IArticleservice;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -12,15 +12,15 @@ import org.springframework.web.bind.annotation.*;
 public class articleRestController {
     private  final IArticleservice articleRest;
     @PostMapping("addArticle")
-    recArticleDTO ajouterArticle(@RequestBody recArticleDTO articleDTO){
+    RecArticleDTO ajouterArticle(@RequestBody RecArticleDTO articleDTO){
         return articleRest.addArticle(articleDTO);
     }
     @PutMapping("updateArticle")
-    recArticleDTO modifierArticle(@RequestBody recArticleDTO articleDTO){
+    RecArticleDTO modifierArticle(@RequestBody RecArticleDTO articleDTO){
         return articleRest.updateArticle(articleDTO);
     }
     @DeleteMapping("deleteArticle")
-    void deleteArticle(recArticleDTO articleDTO){
+    void deleteArticle(RecArticleDTO articleDTO){
         articleRest.deleteArticle(articleDTO);
     }
     @DeleteMapping("deleteArticleById/{id}")
@@ -28,11 +28,11 @@ public class articleRestController {
         articleRest.deleteArticle(id);
     }
 @GetMapping("findAllArticles/{size}/{pagenbr}")
-    Page<recArticleDTO> findAll(@PathVariable int size,@PathVariable int pagenbr){
+    Page<RecArticleDTO> findAll(@PathVariable int size, @PathVariable int pagenbr){
         return articleRest.findAll(size,pagenbr);
     }
 @GetMapping("findOneArticleById/{id}")
-    recArticleDTO findById(@PathVariable long id){
+RecArticleDTO findById(@PathVariable long id){
         return articleRest.findById(id);
     }
 
